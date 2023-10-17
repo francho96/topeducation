@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>hola</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #fafafa;
+        }
+        .topbar {
+            background-color: #1a1a1a;
+            display: flex;
+            width: 100%;
+            color: #fafafa;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+        }
+        .menuButton {
+            color: #fafafa; !important
+        }
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <h1 onclick="window.location.href = '/';">Top Education</h1>
+    <div>
+        <a class="menuButton" href="/nuevoestudiante">ingresar estudiante</a>
+    </div>
+</div>
+<h1>Listado de Estudiantes</h1>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Estudiante</title>
+</head>
+<body>
+<h1>Detalles del Estudiante</h1>
+
+<p><strong>Nombre:</strong> <span th:text="${estudiante.nombres}"></span></p>
+<p><strong>Apellidos:</strong> <span th:text="${estudiante.apellidos}"></span></p>
+<p><strong>Tipo Colegio:</strong> <span id="tipoColegio" th:text="${estudiante.tipoColegio}"></span></p>
+<div>
+    <form>
+        <label for="tipoPago">Tipo de pago:</label>
+        <select id="tipoPago" name="tipoPago">
+            <option>Contado</option>
+            <option>Cuotas</option>
+        </select>
+        <label for="cuotas">cantidad de cuotas:</label>
+        <input type="number" id="cuotas" name="cuotas" min=2 max>
+        <button type="submit">Guardar datos</button>
+    </form>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var tipoPagoSelect = document.getElementById("tipoPago");
+        var cuotasInput = document.getElementById("cuotas");
+        var tipoColegioSpan = document.getElementById("tipoColegio");
+        var tipoColegio = tipoColegioSpan.textContent;
+        console.log(tipoColegio);
+        tipoPagoSelect.addEventListener("change", function () {
+            if (tipoPagoSelect.value === "Contado") {
+                cuotasInput.disabled = true;
+            } else {
+                if (tipoColegio === "Municipal"){
+                    cuotasInput.setAttribute("max", 10);
+                } else if (tipoColegio === "Subvencionado"){
+                    cuotasInput.setAttribute("max", 7);
+                } else if (tipoColegio === "Privado"){
+                    cuotasInput.setAttribute("max", 4);
+                }
+                cuotasInput.disabled = false;
+            }
+        });
+        if (tipoPagoSelect.value === "Contado") {
+            cuotasInput.disabled = true;
+        } else if (tipoColegio === "Municipal"){
+            cuotasInput.setAttribute("max", 10);
+        } else if (tipoColegio === "Subvencionado"){
+            cuotasInput.setAttribute("max", 7);
+        } else if (tipoColegio === "Privado"){
+            cuotasInput.setAttribute("max", 4);
+        }
+    });
+</script>
+</body>
+</html>
+
+</table>
+</body>
+</html>

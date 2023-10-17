@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hola</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #fafafa;
+        }
+        .topbar {
+            background-color: #1a1a1a;
+            display: flex;
+            width: 100%;
+            color: #fafafa;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+        }
+        .menuButton {
+            color: #fafafa; !important
+        }
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <h1 onclick="window.location.href = '/';">Top Education</h1>
+</div>
+<h1>Ingreso de usuario Top Education</h1>
+<p>En este sector, se deben ingresar los datos del estudiante:</p>
+<form method="post" action="/postdatos">
+    <label for="nombres">Nombres</label> <br/>
+    <input type="text" id="nombres" name="nombres" required/>
+    <label for="apellidos">Apellidos</label>
+    <input type="text" id="apellidos" name="apellidos" required/>
+    <label for="rut">Rut</label>
+    <input type="number" id="rut" name="rut" required/>
+    -
+    <input type="text" id="dv" name="dv" required>
+    <label for="fechaNacimiento">Fecha de nacimiento</label>
+    <input type="date" id="fechaNacimiento" name="fechaNacimiento" required/>
+    <label for="nombreColegio">Nombre Colegio</label>
+    <input type="text" id="nombreColegio" name="nombreColegio" required/>
+    <label for="tipoColegio">Tipo Colegio</label>
+    <select id="tipoColegio" name="tipoColegio" required>
+        <option>Municipal</option>
+        <option>Subvencionado</option>
+        <option>Privado</option>
+    </select>
+    <label for="anoEgreso">Año egreso del colegio</label>
+    <input type="number" min=1990 max="2024" id="anoEgreso" name="anoEgreso" required/>
+    <button type="submit">Guardar</button>
+</form>
+</body>
+</html>

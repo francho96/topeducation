@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>hola</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #fafafa;
+        }
+        .topbar {
+            background-color: #1a1a1a;
+            display: flex;
+            width: 100%;
+            color: #fafafa;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+        }
+        .menuButton {
+            color: #fafafa; !important
+        }
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <h1 onclick="window.location.href = '/';">Top Education</h1>
+    <div>
+        <a class="menuButton" href="/nuevoestudiante">ingresar estudiante</a>
+    </div>
+</div>
+<h1>Listado de Estudiantes</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>RUT</th>
+        <th>Accion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="estudiante : ${estudiantes}">
+        <td th:text="${estudiante.nombres}"></td>
+        <td th:text="${estudiante.apellidos}"></td>
+        <td th:text="${estudiante.rut + '-' + estudiante.dv}"></td>
+        <td>
+            <a th:href="@{'/generarcuota/' + ${estudiante.rut}}">Generar Cuotas</a>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
